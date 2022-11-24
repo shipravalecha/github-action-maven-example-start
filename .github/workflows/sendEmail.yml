@@ -18,7 +18,7 @@ jobs:
         
     - name: Send Email
       if: always()
-      uses: shipravalecha/github-action-maven-example-start/action-send-mail@v2
+      uses: shipravalecha/github-action-maven-example-start@v1
       with:
         # mail server settings
         server_address: smtp.gmail.com
