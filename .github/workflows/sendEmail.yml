@@ -1,0 +1,36 @@
+name: sendEmail
+
+on:
+ push:
+    branches: [ master ]
+
+jobs:
+  email_send:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 14
+      uses: actions/setup-java@v1
+      with:
+        java-version: 14
+        
+    - name: Send Email
+      if: always()
+      uses: shipravalecha/action-send-mail@v2
+      with:
+        # mail server settings
+        server_address: smtp.gmail.com
+        server_port: 465
+        # user credentials
+        username: ${{ secrets.khanriha9851 }}
+        password: ${{ secrets.khanriha9851 }}
+        # email subject
+        subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+        # email body as text
+        body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+        # comma-separated string, send email to
+        to: shipravalecha92@gmail.com,khanriha9851@gmail.com
+        # from email name
+        from: Shipra Valecha
