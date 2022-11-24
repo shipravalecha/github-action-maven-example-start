@@ -18,14 +18,14 @@ jobs:
         
     - name: Send Email
       if: always()
-      uses: shipravalecha/github-action-maven-example-start@v1
+      uses: shipravalecha/github-action-maven-example-start/send-mailer@v1.0.2
       with:
         # mail server settings
         server_address: smtp.gmail.com
         server_port: 465
         # user credentials
-        username: ${{ secrets.khanriha9851 }}
-        password: ${{ secrets.khanriha9851 }}
+        account: ${{ secrets.ACCOUNT }}
+        password: ${{ secrets.MAIL_PASSWORD }}
         # email subject
         subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
         # email body as text
@@ -33,4 +33,4 @@ jobs:
         # comma-separated string, send email to
         to: shipravalecha92@gmail.com,khanriha9851@gmail.com
         # from email name
-        from: Shipra Valecha
+        from: ${{secrets.MAIL_ADDRESS}}
